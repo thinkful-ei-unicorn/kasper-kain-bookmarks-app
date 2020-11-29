@@ -14,7 +14,7 @@ const audioPlayer = {
   soundPlayer: new Audio(),
   musicPlayer: new Audio(),
   soundVolume: 0.6,
-  musicvolume: 0.8,
+  musicvolume: 0.6,
   playOneShot: function (src) {
     if (store.soundEnabled) {
       this.soundPlayer.volume = this.soundVolume;

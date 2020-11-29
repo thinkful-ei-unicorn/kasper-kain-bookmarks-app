@@ -263,7 +263,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jque
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = __webpack_require__.p + \"df7dc58417a9d2bd85a5145cbb0d69c7.mp3\";\n\n//# sourceURL=webpack:///./src/audio/sounds/bg.mp3?");
+eval("module.exports = __webpack_require__.p + \"334129be0982d1c74ea6247d146fddb8.mp3\";\n\n//# sourceURL=webpack:///./src/audio/sounds/bg.mp3?");
 
 /***/ }),
 
