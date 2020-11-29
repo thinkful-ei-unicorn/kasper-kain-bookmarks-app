@@ -1,7 +1,7 @@
 {
-  "name": "shopping-list-starter",
+  "name": "bookmarkapp",
   "version": "1.0.0",
-  "description": "Created for the Thinkful EI Program.",
+  "description": "Created by kasperkain.",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
