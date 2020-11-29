@@ -1,0 +1,20 @@
+#messagebox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 10px;
+  text-align: center;
+}
+
+#messagebox p {
+  font-size: 16pt;
+}
+
+#messagebox .errMessage {
+  color: rgb(253, 105, 105);
+}
+
+#messagebox .message {
+  color: white;
+}

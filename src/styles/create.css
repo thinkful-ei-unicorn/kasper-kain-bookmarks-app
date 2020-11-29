@@ -1,0 +1,38 @@
+#item-custom {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#new-item-info-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+
+  margin-bottom: 15px;
+}
+
+#new-item-info-container > * {
+  background-color: black;
+  width: 80%;
+  border: 2px solid white;
+  padding: 5px;
+}
+
+#new-item-info-container > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+input[type='number'] {
+  width: 2rem;
+  background-color: black;
+}
+
+textarea {
+  flex: 3;
+  height: 500px;
+}

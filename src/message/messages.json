@@ -1,0 +1,26 @@
+{
+  "new_bookmark": [
+    "A new Bookmark has entered the battle!",
+    "Bookmark has joined the battle!",
+    "A wild Bookmark Appears!",
+    "Bookmark was summoned!",
+    "A new Bookmark has entered the fray!",
+    "Bookmark appeared from the shadows!"
+  ],
+  "delete-bookmark": [
+    "Bookmark was Knocked Out!",
+    "Bookmark Perished!",
+    "Bookmark fainted!",
+    "User used cut! It was very effective!",
+    "Overkill!",
+    "KO!",
+    "Bookmark took 9999 damage!"
+  ],
+  "expand-bookmark": [
+    "User peaked at Bookmark!",
+    "User scanned Bookmark!",
+    "Bookmark has been exposed!",
+    "User looked at Bookmarks properties!",
+    "Bookmark has been made vulnerable!"
+  ]
+}
