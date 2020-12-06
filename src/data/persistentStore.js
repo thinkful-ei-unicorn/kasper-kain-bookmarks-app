@@ -4,10 +4,7 @@ const BASE_URL = 'https://thinkful-list-api.herokuapp.com/kkain';
 const apiFetch = function (...args) {
   return fetch(...args)
     .then((res) => handleError(res))
-    .then((result) => result)
-    .catch((error) => {
-      console.log(error);
-    });
+    .then((result) => result);
 };
 
 function handleError(response) {

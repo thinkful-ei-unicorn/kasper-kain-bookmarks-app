@@ -15,77 +15,36 @@ const getIdFromElement = function (el) {
 
 //#endregion
 
-//#region HANDLES EVENTS THAT TRANSITION TO A NEW STATE
-const handleTransitionEvents = function () {
-  $('main').on('click', '#new-item-button', (e) => {
-    e.preventDefault();
-
-    audio.playSound(1);
-    pageRenderer.render(1);
-  });
-  $('main').on('click', '#cancel-item-button', (e) => {
-    e.preventDefault();
-
-    audio.playSound(2);
-    pageRenderer.render(0);
-  });
-};
-
 //#endregion
 
 //#region HANDLES EVENTS THAT SUBMIT DATA AND THEN TRANSITION
-const handleSubmitEvents = function () {
-  $('main').on('submit', '#item-custom', (e) => {
-    e.preventDefault();
-
-    let itemName = $('main input[name="item-name"]').val();
-    let itemURL = $('main input[name="item-URL"]').val();
-    let itemDesc = $('main textarea').val();
-    let itemRating = $('main input[name="item-rating"]').val();
-
-    let error = errorChecker.checkErrors(
-      [
-        itemName === '',
-        itemURL === '',
-        !itemURL.includes('https://') && !itemURL.includes('http://'),
-      ],
-      [
-        'Title field cannot be empty',
-        'URL field cannot be empty',
-        'URL field must contain http(s)://',
-      ]
-    );
-
-    if (!error) {
-      let newItem = {
-        title: itemName,
-        url: itemURL,
-        desc: itemDesc,
-        rating: itemRating,
-      };
-
-      //pageRenderer.renderMessage('new_bookmark');
-      messageLogger.logMessage('new_bookmark');
-
-      persistentStore
-        .addItem(newItem)
-        .then(() => store.updateItemDataBase())
-        .then(() => pageRenderer.render(0));
-      audio.playSound(3);
-      animator.playOneShot($('body'), 'white-flash');
-      animator.playOneShot($('main'), 'shake');
-      animator.playFaceOneShot(2);
-    } else {
-      audio.playSound(4);
-    }
-  });
-};
 
 //#endregion
 
 //#region HANDLES EVENTS RELATED TO THE BOOKMARK ITEMS
 
-const handleBookmarkEvents = function () {
+//#endregion
+
+//#region HANDLES TITLE EVENTS
+
+// ------------------------------
+
+const toggleSoundHandler = function () {
+  $('main').on('click', '#audio-toggle-button', (e) => {
+    store.soundEnabled = !store.soundEnabled;
+    pageRenderer.render(2);
+  });
+};
+
+const startAppHandler = function () {
+  $('main').on('click', '#start-button', () => {
+    pageRenderer.render(0);
+    audio.playBackgroundMusic();
+    store.hasStarted = true;
+  });
+};
+
+const bookMarkExpandHandler = function () {
   $('main').on('click', '.bookmark-titlebar', (e) => {
     let id = getIdFromElement(e.currentTarget);
     store.findItem(id).expanded = !store.findItem(id).expanded;
@@ -99,18 +58,27 @@ const handleBookmarkEvents = function () {
       audio.playSound(2);
     }
   });
+};
 
+const deleteItemHandler = function () {
   $('main').on('click', '.bookmark-delete-button', (e) => {
+    e.preventDefault();
     let id = getIdFromElement(e.currentTarget);
-    persistentStore.deleteItem(id).then(() => {
-      store.deleteItem(id);
-      pageRenderer.render(0);
-      messageLogger.logMessage('delete-bookmark');
-      audio.playSound(0);
-      animator.playOneShot($('body'), 'red-blink');
-      animator.playOneShot($('main'), 'shake');
-      animator.playFaceOneShot(1);
-    });
+    persistentStore
+      .deleteItem(id)
+      .then(() => {
+        store.deleteItem(id);
+        pageRenderer.render(0);
+        messageLogger.logMessage('delete-bookmark');
+        audio.playSound(0);
+        animator.playOneShot($('body'), 'red-blink');
+        animator.playOneShot($('main'), 'shake');
+        animator.playFaceOneShot(1);
+      })
+      .catch(() => {
+        audio.playSound(4);
+        messageLogger.logErrorMessage('Check your connection and try again');
+      });
   });
 
   $('main').on('change', '#sort-item-button', (e) => {
@@ -119,24 +87,71 @@ const handleBookmarkEvents = function () {
   });
 };
 
-//#endregion
+const cancelAddItemHandler = function () {
+  $('main').on('click', '#cancel-item-button', (e) => {
+    e.preventDefault();
 
-//#region HANDLES TITLE EVENTS
-
-const handleTitleEvents = function () {
-  $('main').on('click', '#start-button', () => {
+    audio.playSound(2);
     pageRenderer.render(0);
-    audio.playBackgroundMusic();
-    store.hasStarted = true;
   });
+};
 
-  $('main').on('click', '#audio-toggle-button', (e) => {
-    if (store.soundEnabled) {
-      $(e.currentTarget).html('Audio off');
-      store.soundEnabled = false;
+const addItemHandler = function () {
+  $('main').on('click', '#new-item-button', (e) => {
+    e.preventDefault();
+
+    audio.playSound(1);
+    pageRenderer.render(1);
+  });
+};
+
+const newItemHandler = function () {
+  $('main').on('submit', '#item-custom', (e) => {
+    e.preventDefault();
+
+    let itemName = $('main input[name="item-name"]').val();
+    let itemURL = $('main input[name="item-URL"]').val();
+    let itemDesc = $('main textarea').val();
+    let itemRating = $('main input[name="item-rating"]').val();
+
+    let newItem = {
+      title: itemName,
+      url: itemURL,
+      desc: itemDesc,
+      rating: itemRating,
+    };
+
+    let err = errorChecker.checkErrors(
+      [
+        itemName === '',
+        itemURL === '',
+        !itemURL.includes('https://') && !itemURL.includes('http://'),
+      ],
+      [
+        'Title field cannot be empty',
+        'URL field cannot be empty',
+        'URL field must contain http(s)://',
+      ]
+    );
+
+    if (!err) {
+      persistentStore
+        .addItem(newItem)
+        .then(() => store.updateItemDataBase())
+        .then(() => {
+          pageRenderer.render(0);
+          audio.playSound(3);
+          animator.playOneShot($('body'), 'white-flash');
+          animator.playOneShot($('main'), 'shake');
+          animator.playFaceOneShot(2);
+          messageLogger.logMessage('new_bookmark');
+        })
+        .catch(() => {
+          messageLogger.logErrorMessage('Check your connection and try again');
+          audio.playSound(4);
+        });
     } else {
-      $(e.currentTarget).html('Audio On');
-      store.soundEnabled = true;
+      audio.playSound(4);
     }
   });
 };
@@ -144,8 +159,11 @@ const handleTitleEvents = function () {
 //#endregion
 
 export default {
-  handleTransitionEvents,
-  handleSubmitEvents,
-  handleBookmarkEvents,
-  handleTitleEvents,
+  toggleSoundHandler,
+  startAppHandler,
+  bookMarkExpandHandler,
+  deleteItemHandler,
+  cancelAddItemHandler,
+  addItemHandler,
+  newItemHandler,
 };

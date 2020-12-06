@@ -1,4 +1,4 @@
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 500px) {
   * {
     font-size: 20px;
   }
@@ -6,5 +6,148 @@
   main,
   header {
     max-width: 600px;
+  }
+
+  .bookmark-star-rating {
+    display: flex;
+  }
+
+  .bookmark-single-rating {
+    display: none;
+  }
+
+  .new-item-input {
+    flex-direction: row;
+  }
+
+  @media only screen and (max-height: 600px) {
+    * {
+      font-size: 16px;
+    }
+
+    body {
+      flex-direction: row;
+    }
+
+    header {
+      flex: 1;
+      flex-direction: column;
+    }
+
+    #container {
+      margin: 0;
+      height: 100%;
+    }
+
+    #title-screen {
+      text-align: center;
+      padding: 30px;
+    }
+
+    #contentbox {
+      flex: 6;
+    }
+
+    #contentbox > * {
+      padding: 10px;
+    }
+
+    .bookmark {
+      flex-basis: 50%;
+    }
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    #bookmark-container {
+      padding: 0;
+    }
+
+    #messagebox p {
+      font-size: 15px;
+    }
+
+    .bookmark-single-star {
+      display: inline;
+    }
+
+    .bookmark-star-rating {
+      display: none;
+    }
+
+    .bookmark-single-rating {
+      display: flex;
+    }
+
+    .bookmark-titlebar {
+      margin: 10px 10px;
+    }
+  }
+}
+
+@media only screen and (max-height: 700px) {
+  @media only screen and (max-width: 400px) {
+    * {
+      font-size: 14px;
+    }
+
+    header {
+      display: none;
+    }
+
+    #container {
+      height: 100%;
+      width: 100%;
+    }
+
+    .button-container * {
+      padding: 0;
+    }
+
+    #contentbox {
+      flex: 8;
+    }
+
+    #messagebox p {
+      font-size: 12px;
+    }
+
+    .bookmark-titlebar {
+      padding: 8px;
+      margin: 8px;
+    }
+  }
+}
+
+@media only screen and (min-height: 900px) {
+  @media only screen and (min-width: 600px) {
+    * {
+      font-size: 30px;
+    }
+
+    main {
+      max-height: 70%;
+    }
+
+    #contentbox {
+      flex: 7;
+    }
+
+    #messagebox p {
+      font-size: 30px;
+    }
+
+    img {
+      width: 130px;
+    }
+
+    button,
+    input[type='submit'],
+    input[type='button'],
+    select {
+      height: 4rem;
+    }
   }
 }

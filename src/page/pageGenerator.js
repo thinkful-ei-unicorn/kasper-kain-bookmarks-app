@@ -26,15 +26,25 @@ const generateRatingList = function (ratingIndex) {
   </ul>`;
 };
 
+const generateRatingSingle = function (ratingIndex) {
+  return `
+  <div class="bookmark-single-rating">
+  <p><i class="fas fa-star"></i></p>
+  <p class="bookmark-single-star">${ratingIndex}</p>
+  </div>
+  `;
+};
+
 const generateBookmarkItem = function (item) {
   let expandedInfo = item.expanded ? generateExpandedBookmarkItem(item) : '';
 
   if (item.rating > store.sort) {
     return `
   <li class="bookmark" id="${item.id}">
-  <div class="bookmark-titlebar">
+  <div class="bookmark-titlebar" tabindex="0">
   <p>${item.title}</p>
       ${generateRatingList(item.rating)}
+      ${generateRatingSingle(item.rating)}
   </div>
     ${expandedInfo}
   </l>`;
@@ -69,7 +79,7 @@ const generateBookMark_HTML = function () {
 const generateStateOneHTML = function () {
   return `
     <form class="button-container">
-        <input type="button" id="new-item-button" value="new" />
+        <input type="button" id="new-item-button" value="new"/>
         <select id="sort-item-button">
         <option class="sort-option-button" value="0">Show all</option>
         <option class="sort-option-button" value="1">min = 2</option>
@@ -79,9 +89,11 @@ const generateStateOneHTML = function () {
         </select>
     </form>
     <div id="bookmark-container">
+    <form>
         <ul>
             ${generateBookMark_HTML()}
         </ul>
+        </form>
     </div>
     `;
 };
@@ -91,16 +103,25 @@ const generateStateTwoHTML = function () {
         <form id="item-custom">
           <div class="button-container">
               <input type="submit" id="add-item-button" value="Create" />
-              <input type="button" id="cancel-item-button" value="cancel" />
+              <input type="button" id="cancel-item-button" value="Cancel" />
           </div>
           <div id="new-item-info-container">
-            <input type="text" name="item-name" placeholder="Enter title" />
+          <div class ="new-item-input">
+            <label for="item-name">Bookmark URL</label>
+            <input type="text" id="item-name" name="item-name" placeholder="Enter title" />
+          </div>
+          <div class ="new-item-input">
+          <label for="item-name">Bookmark name</label>
             <input type="text" name="item-URL" placeholder="Enter website URL" />
-            <div id="rating-selection>
+          </div>
+            <div class ="new-item-input">
             <label for="rating">Select Rating</label>
             <input type="number" id= "rating" name="item-rating" max = "5" min = "1" value = "1" />
             </div>
-            <textarea name="item-desc" placeholder="Enter description here (optional)" />
+            <div id ="new-item-textarea">
+            <label for="desc">Description</label>
+            <textarea id="desc" name="item-desc" placeholder="Enter description here (optional)" />
+            </div>
           </div>
         </form>
     </div>
@@ -108,11 +129,12 @@ const generateStateTwoHTML = function () {
 };
 
 const generateStatethreeHTML = function () {
+  let audioOn = store.soundEnabled ? 'On' : 'Off';
   return `
     <div id="title-screen">
       <p>Bookmark Application Battle Interface</p>
-      <div id="title-screen-button-container">
-        <button id="audio-toggle-button">Audio On</button>
+      <div class="button-container">
+        <button id="audio-toggle-button">Audio ${audioOn}</button>
         <button id ="start-button">Start</button>
       </div>
     </div>

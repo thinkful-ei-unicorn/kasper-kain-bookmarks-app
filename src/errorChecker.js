@@ -7,7 +7,6 @@ const checkErrors = function (errs, messages) {
       return true;
     }
   }
-
   return false;
 };
 

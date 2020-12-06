@@ -13,13 +13,26 @@ import pageRenderer from './page/pageRenderer';
 import eventHandler from './eventHandler';
 import audio from './audio/audio';
 
+/*
+toggleSoundHandler,
+  startAppHandler,
+  bookMarkExpandHandler,
+  deleteItemHandler,
+  cancelAddItemHandler,
+  addItemHandler,
+  newItemHandler,
+*/
+
 const main = function () {
   pageRenderer.buildPage();
   store.updateItemDataBase().then(() => {
-    eventHandler.handleTransitionEvents();
-    eventHandler.handleSubmitEvents();
-    eventHandler.handleBookmarkEvents();
-    eventHandler.handleTitleEvents();
+    eventHandler.toggleSoundHandler();
+    eventHandler.startAppHandler();
+    eventHandler.bookMarkExpandHandler();
+    eventHandler.deleteItemHandler();
+    eventHandler.cancelAddItemHandler();
+    eventHandler.addItemHandler();
+    eventHandler.newItemHandler();
     audio.PausePlayUserNav();
     pageRenderer.render(2);
   });

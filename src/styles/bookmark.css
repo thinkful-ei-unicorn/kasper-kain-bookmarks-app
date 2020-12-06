@@ -75,7 +75,12 @@
 }
 
 .bookmark-star-rating {
+  display: none;
+}
+
+.bookmark-single-rating {
   display: flex;
+  gap: 10px;
 }
 
 .fas.fa-star {
