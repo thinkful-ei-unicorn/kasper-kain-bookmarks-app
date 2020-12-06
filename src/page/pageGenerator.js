@@ -107,11 +107,11 @@ const generateStateTwoHTML = function () {
           </div>
           <div id="new-item-info-container">
           <div class ="new-item-input">
-            <label for="item-name">Bookmark URL</label>
+            <label for="item-name">Bookmark Name</label>
             <input type="text" id="item-name" name="item-name" placeholder="Enter title" />
           </div>
           <div class ="new-item-input">
-          <label for="item-name">Bookmark name</label>
+          <label for="item-name">Bookmark URL</label>
             <input type="text" name="item-URL" placeholder="Enter website URL" />
           </div>
             <div class ="new-item-input">
