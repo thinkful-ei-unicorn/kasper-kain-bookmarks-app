@@ -14,7 +14,7 @@ View all bookmarks on the main screen (with scrolling). All bookmarks default to
     - a clickable link to the bookmarks website and a delete button.
     - description of the bookmark contained in a scrollable view.
 
-  Add bookmarks to the bookmark list.
+  - Add bookmarks to the bookmark list.
     - User can define a Title, Url, Rating, And optional Description for the bookmark. 
     - User will be notified if any input fields are invalid.
   
