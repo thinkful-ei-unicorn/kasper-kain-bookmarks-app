@@ -16,6 +16,6 @@ Featuring a simulated battle interface fashioned in the style of classic video g
     - description of the bookmark contained in a scrollable view.
 
   - Add bookmarks to the bookmark list.
-    - User can define a Title, Url, Rating, And optional Description for the bookmark. 
-    - User will be notified if any input fields are invalid.
+    - User can define a Title, Url, Rating, And optional description for the bookmark. 
+    - User will be notified if any input fields are invalid, or if a connection error occurs.
   
