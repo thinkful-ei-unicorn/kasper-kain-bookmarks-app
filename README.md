@@ -6,9 +6,7 @@ Featuring a simulated battle interface fashioned in the style of classic video g
 
 # The user can:
 
-Choose to enable audio.
-Start the application when ready.
-
+- Choose to enable audio and start the application when ready.
 - View all bookmarks on the main screen (with scrolling). All bookmarks default to a collapsed view.
 - Remove any bookmarks from the list.
 - Sort bookmarks by minimum rating via a dropdown menu.
