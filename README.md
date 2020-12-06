@@ -1,4 +1,9 @@
-The user can:
+## BABI
+# Bookmark your favorite websites with style!
+Featuring a simulated battle interface fashioned in the style of classic video games.
+- All assets (Including audio and art) were created by me -
+
+# The user can:
 
 Choose to enable audio.
 Start the application when ready.
