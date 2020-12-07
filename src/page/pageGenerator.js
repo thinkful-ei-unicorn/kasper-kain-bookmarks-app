@@ -41,11 +41,11 @@ const generateBookmarkItem = function (item) {
   if (item.rating > store.sort) {
     return `
   <li class="bookmark" id="${item.id}">
-  <div class="bookmark-titlebar" tabindex="0">
+  <button class="bookmark-titlebar" tabindex="0" role="button">
   <p>${item.title}</p>
       ${generateRatingList(item.rating)}
       ${generateRatingSingle(item.rating)}
-  </div>
+  </button>
     ${expandedInfo}
   </l>`;
   } else {
@@ -111,8 +111,8 @@ const generateStateTwoHTML = function () {
             <input type="text" id="item-name" name="item-name" placeholder="Enter title" />
           </div>
           <div class ="new-item-input">
-          <label for="item-name">Bookmark URL</label>
-            <input type="text" name="item-URL" placeholder="Enter website URL" />
+            <label for="item-URL">Bookmark URL</label>
+            <input type="text" id="item-URL" name="item-URL" placeholder="Enter website URL" />
           </div>
             <div class ="new-item-input">
             <label for="rating">Select Rating</label>

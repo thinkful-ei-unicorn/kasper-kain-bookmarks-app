@@ -30,6 +30,7 @@ const main = function () {
     eventHandler.startAppHandler();
     eventHandler.bookMarkExpandHandler();
     eventHandler.deleteItemHandler();
+    eventHandler.sortItemHandler();
     eventHandler.cancelAddItemHandler();
     eventHandler.addItemHandler();
     eventHandler.newItemHandler();

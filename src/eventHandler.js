@@ -13,20 +13,6 @@ const getIdFromElement = function (el) {
   return $(el).closest('.bookmark').attr('id');
 };
 
-//#endregion
-
-//#endregion
-
-//#region HANDLES EVENTS THAT SUBMIT DATA AND THEN TRANSITION
-
-//#endregion
-
-//#region HANDLES EVENTS RELATED TO THE BOOKMARK ITEMS
-
-//#endregion
-
-//#region HANDLES TITLE EVENTS
-
 // ------------------------------
 
 const toggleSoundHandler = function () {
@@ -80,7 +66,9 @@ const deleteItemHandler = function () {
         messageLogger.logErrorMessage('Check your connection and try again');
       });
   });
+};
 
+const sortItemHandler = function () {
   $('main').on('change', '#sort-item-button', (e) => {
     store.sort = $(e.target).val();
     pageRenderer.render(0);
@@ -163,6 +151,7 @@ export default {
   startAppHandler,
   bookMarkExpandHandler,
   deleteItemHandler,
+  sortItemHandler,
   cancelAddItemHandler,
   addItemHandler,
   newItemHandler,

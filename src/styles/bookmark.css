@@ -1,7 +1,12 @@
+.bookmark {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
 .bookmark-titlebar {
   display: flex;
   justify-content: space-between;
-  align-items: center;
 
   height: auto;
   margin: 15px 10px;
@@ -14,6 +19,10 @@
   border-image-outset: 2px;
 
   border-style: solid;
+}
+
+.bookmark-titlebar:focus {
+  border: 3px solid yellow;
 }
 
 .bookmark-titlebar:hover {
