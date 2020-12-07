@@ -6,7 +6,7 @@ Featuring a simulated battle interface fashioned in the style of classic video g
 - All assets (Including audio and art) were created by me
 - Live link : https://kasperkain.github.io/BABI/
 
-# The user can:
+## The user can:
 
 - Choose to enable audio and start the application when ready.
 - View all bookmarks on the main screen (with scrolling). All bookmarks default to a collapsed view.
